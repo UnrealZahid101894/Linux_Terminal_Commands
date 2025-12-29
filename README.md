@@ -16,21 +16,21 @@ A comprehensive, well-organized guide to essential Linux terminal commands. Curr
   - [Navigation](#navigation)
   - [Getting Help](#getting-help)
 - [📚 Complete Command Reference](#-complete-command-reference)
-  - [System Information](#system-information)
-  - [Package Management](#package-management)
-  - [File and Directory Operations](#file-and-directory-operations)
-  - [File Search and Navigation](#file-search-and-navigation)
-  - [File Permissions and Ownership](#file-permissions-and-ownership)
-  - [Text Processing and Manipulation](#text-processing-and-manipulation)
-  - [System Monitoring and Performance](#system-monitoring-and-performance)
-  - [Process Management](#process-management)
-  - [Network Operations](#network-operations)
-  - [Disk and Storage Management](#disk-and-storage-management)
-  - [User and Group Management](#user-and-group-management)
-  - [System Services](#system-services)
-  - [Compression and Archives](#compression-and-archives)
-  - [System Maintenance](#system-maintenance)
-  - [Shell Utilities](#shell-utilities)
+  - [💻 System Information](#-system-information)
+  - [📦 Package Management](#-package-management)
+  - [📁 File and Directory Operations](#-file-and-directory-operations)
+  - [🔍 File Search and Navigation](#-file-search-and-navigation)
+  - [🔐 File Permissions and Ownership](#-file-permissions-and-ownership)
+  - [📝 Text Processing and Manipulation](#-text-processing-and-manipulation)
+  - [📊 System Monitoring and Performance](#-system-monitoring-and-performance)
+  - [⚙️ Process Management](#️-process-management)
+  - [🌐 Network Operations](#-network-operations)
+  - [💾 Disk and Storage Management](#-disk-and-storage-management)
+  - [👥 User and Group Management](#-user-and-group-management)
+  - [🔧 System Services](#-system-services)
+  - [🗜️ Compression and Archives](#️-compression-and-archives)
+  - [🛠️ System Maintenance](#️-system-maintenance)
+  - [🐚 Shell Utilities](#-shell-utilities)
 - [Contributing](#contributing)
 - [Roadmap](#roadmap)
 
@@ -39,13 +39,13 @@ A comprehensive, well-organized guide to essential Linux terminal commands. Curr
 ## 🎯 About This Repository
 
 This repository serves as a practical reference for Linux terminal commands, organized by category for easy navigation. Each command includes:
-- **What it does**    : Clear explanation in simple terms
-- **When to use it**  : Real-world scenarios
-- **How to use it**   : Command syntax with common options
-- **Examples**        : Copy-paste ready commands
+- **What it does**   : Clear explanation in simple terms
+- **When to use it** : Real-world scenarios
+- **How to use it**  : Command syntax with common options
+- **Examples**       : Copy-paste ready commands
 
-**Current Support**   : Zorin OS (Ubuntu-based)  
-**Coming Soon**       : Fedora, Arch Linux, openSUSE, and more
+**Current Support**  : Zorin OS (Ubuntu-based)  
+**Coming Soon**      : Fedora, Arch Linux, openSUSE, and more
 
 > 💡 **New to terminal?** Start with the [Quick Reference](#-quick-reference---most-used-commands) section below for the most commonly used commands!
 
@@ -55,7 +55,7 @@ This repository serves as a practical reference for Linux terminal commands, org
 
 This section contains the commands you'll use 90% of the time. Bookmark this for quick access!
 
-### Software Management
+### <<<<<<<<<< Software Management
 
 **Update your system (run this weekly)**
 ```bash
@@ -95,7 +95,7 @@ sudo apt autoremove && sudo apt autoclean
 
 ---
 
-### System Control
+### <<<<<<<<<< System Control
 
 **Restart your computer**
 ```bash
@@ -120,7 +120,7 @@ uptime
 
 ---
 
-### File Operations
+### <<<<<<<<<< File Operations
 
 **List files in current folder**
 ```bash
@@ -181,7 +181,7 @@ nano filename.txt
 
 ---
 
-### Navigation
+### <<<<<<<<<< Navigation
 
 **Show current folder location**
 ```bash
@@ -227,7 +227,7 @@ locate filename
 
 ---
 
-### Getting Help
+### <<<<<<<<<< Getting Help
 
 **See what a command does**
 ```bash
