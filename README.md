@@ -10,27 +10,7 @@ A comprehensive, well-organized guide to essential Linux terminal commands. Curr
 
 - [About This Repository](#about-this-repository)
 - [⚡ Quick Reference - Most Used Commands](#-quick-reference---most-used-commands)
-  - [Software Management](#software-management)
-  - [System Control](#system-control)
-  - [File Operations](#file-operations)
-  - [Navigation](#navigation)
-  - [Getting Help](#getting-help)
 - [📚 Complete Command Reference](#-complete-command-reference)
-  - [💻 System Information](#-system-information)
-  - [📦 Package Management](#-package-management)
-  - [📁 File and Directory Operations](#-file-and-directory-operations)
-  - [🔍 File Search and Navigation](#-file-search-and-navigation)
-  - [🔐 File Permissions and Ownership](#-file-permissions-and-ownership)
-  - [📝 Text Processing and Manipulation](#-text-processing-and-manipulation)
-  - [📊 System Monitoring and Performance](#-system-monitoring-and-performance)
-  - [⚙️ Process Management](#️-process-management)
-  - [🌐 Network Operations](#-network-operations)
-  - [💾 Disk and Storage Management](#-disk-and-storage-management)
-  - [👥 User and Group Management](#-user-and-group-management)
-  - [🔧 System Services](#-system-services)
-  - [🗜️ Compression and Archives](#️-compression-and-archives)
-  - [🛠️ System Maintenance](#️-system-maintenance)
-  - [🐚 Shell Utilities](#-shell-utilities)
 - [Contributing](#contributing)
 - [Roadmap](#roadmap)
 
@@ -39,13 +19,13 @@ A comprehensive, well-organized guide to essential Linux terminal commands. Curr
 ## 🎯 About This Repository
 
 This repository serves as a practical reference for Linux terminal commands, organized by category for easy navigation. Each command includes:
-- **What it does**   : Clear explanation in simple terms
-- **When to use it** : Real-world scenarios
-- **How to use it**  : Command syntax with common options
-- **Examples**       : Copy-paste ready commands
+- **What it does**: Clear explanation in simple terms
+- **When to use it**: Real-world scenarios
+- **How to use it**: Command syntax with common options
+- **Examples**: Copy-paste ready commands
 
-**Current Support**  : Zorin OS (Ubuntu-based)  
-**Coming Soon**      : Fedora, Arch Linux, openSUSE, and more
+**Current Support**: Zorin OS (Ubuntu-based)  
+**Coming Soon**: Fedora, Arch Linux, openSUSE, and more
 
 > 💡 **New to terminal?** Start with the [Quick Reference](#-quick-reference---most-used-commands) section below for the most commonly used commands!
 
@@ -55,214 +35,75 @@ This repository serves as a practical reference for Linux terminal commands, org
 
 This section contains the commands you'll use 90% of the time. Bookmark this for quick access!
 
-### <<<<<<<<<< Software Management
+### Software Management
 
-**Update your system (run this weekly)**
-```bash
-sudo apt update && sudo apt upgrade -y
-```
-💡 This checks for updates and installs them. Always do this before installing new software!
+| Command | What It Does | Example |
+|---------|-------------|---------|
+| `sudo apt update && sudo apt upgrade -y` | Updates package lists and installs all available updates | Run weekly to keep system secure |
+| `sudo apt install <package>` | Installs a program | `sudo apt install vlc` |
+| `sudo apt remove <package>` | Removes a program (keeps settings) | `sudo apt remove vlc` |
+| `sudo apt purge <package>` | Completely removes a program including settings | `sudo apt purge firefox` |
+| `apt search <keyword>` | Searches for available programs | `apt search video editor` |
+| `sudo apt autoremove && sudo apt autoclean` | Cleans up unused files and packages | Run monthly to free disk space |
 
-**Install a program**
-```bash
-sudo apt install program-name
-```
-📌 Example: `sudo apt install vlc` installs VLC media player
-
-**Remove a program**
-```bash
-sudo apt remove program-name
-```
-📌 Example: `sudo apt remove vlc` removes VLC
-
-**Completely remove a program (including settings)**
-```bash
-sudo apt purge program-name
-```
-💡 Use this when you want to start fresh with a program
-
-**Search for a program**
-```bash
-apt search keyword
-```
-📌 Example: `apt search video editor` finds video editing software
-
-**Clean up unused files**
-```bash
-sudo apt autoremove && sudo apt autoclean
-```
-💡 Run this monthly to free up disk space
+💡 **Pro Tip**: Always run `sudo apt update` before installing new software to get the latest versions!
 
 ---
 
-### <<<<<<<<<< System Control
+### System Control
 
-**Restart your computer**
-```bash
-sudo reboot
-```
-
-**Shut down your computer**
-```bash
-sudo shutdown now
-```
-
-**Shut down in 10 minutes**
-```bash
-sudo shutdown +10
-```
-💡 Cancel with: `sudo shutdown -c`
-
-**Check how long system has been running**
-```bash
-uptime
-```
+| Command | What It Does | Notes |
+|---------|-------------|-------|
+| `sudo reboot` | Restarts your computer | Immediately reboots |
+| `sudo shutdown now` | Shuts down immediately | Powers off the system |
+| `sudo shutdown +10` | Schedules shutdown in 10 minutes | Cancel with `sudo shutdown -c` |
+| `uptime` | Shows how long system has been running | Also displays system load |
 
 ---
 
-### <<<<<<<<<< File Operations
+### File Operations
 
-**List files in current folder**
-```bash
-ls
-```
-💡 See more details: `ls -lah`
+| Command | What It Does | Example |
+|---------|-------------|---------|
+| `ls` | Lists files in current folder | Use `ls -lah` for detailed view |
+| `mkdir <name>` | Creates a new folder | `mkdir Documents/Projects` |
+| `mkdir -p <path>` | Creates nested folders | `mkdir -p Work/2024/Reports` |
+| `cp <source> <dest>` | Copies a file | `cp file.txt backup.txt` |
+| `cp -r <source> <dest>` | Copies a folder and contents | `cp -r folder/ backup/` |
+| `mv <old> <new>` | Moves or renames a file | `mv file.txt Documents/` |
+| `rm <file>` | Deletes a file (⚠️ permanent!) | No recycle bin - be careful! |
+| `rm -r <folder>` | Deletes a folder (⚠️ permanent!) | Deletes everything inside |
+| `cat <file>` | Views file contents | For long files use `less` |
+| `nano <file>` | Edits a text file | Save: Ctrl+O, Exit: Ctrl+X |
 
-**Create a new folder**
-```bash
-mkdir folder-name
-```
-📌 Example: `mkdir Documents/Projects`
-
-**Create multiple nested folders**
-```bash
-mkdir -p Documents/Work/2024/Reports
-```
-
-**Copy a file**
-```bash
-cp file.txt backup.txt
-```
-
-**Copy a folder**
-```bash
-cp -r folder/ backup-folder/
-```
-
-**Move or rename a file**
-```bash
-mv oldname.txt newname.txt
-```
-📌 Move example: `mv file.txt Documents/`
-
-**Delete a file**
-```bash
-rm file.txt
-```
-⚠️ **Warning**: This is permanent! No recycle bin!
-
-**Delete a folder**
-```bash
-rm -r folder-name/
-```
-⚠️ **Warning**: This deletes everything inside! Be careful!
-
-**View a file's contents**
-```bash
-cat filename.txt
-```
-💡 For long files use: `less filename.txt` (press Q to quit)
-
-**Edit a text file**
-```bash
-nano filename.txt
-```
-💡 Save: `Ctrl+O`, Exit: `Ctrl+X`
+⚠️ **Warning**: `rm` commands are permanent - there's no recycle bin in terminal!
 
 ---
 
-### <<<<<<<<<< Navigation
+### Navigation
 
-**Show current folder location**
-```bash
-pwd
-```
-
-**Go to your home folder**
-```bash
-cd ~
-```
-or just:
-```bash
-cd
-```
-
-**Go to a specific folder**
-```bash
-cd /path/to/folder
-```
-📌 Example: `cd Documents`
-
-**Go up one folder level**
-```bash
-cd ..
-```
-
-**Go back to previous folder**
-```bash
-cd -
-```
-
-**Find a file by name**
-```bash
-find . -name "filename.txt"
-```
-📌 Example: `find ~ -name "*.pdf"` finds all PDFs in your home folder
-
-**Quick search for files (faster)**
-```bash
-locate filename
-```
-💡 Update the database first: `sudo updatedb`
+| Command | What It Does | Example |
+|---------|-------------|---------|
+| `pwd` | Shows current folder location | Prints full path |
+| `cd ~` or `cd` | Goes to your home folder | Quick way home |
+| `cd <path>` | Changes to specified folder | `cd Documents` |
+| `cd ..` | Goes up one folder level | Navigate to parent directory |
+| `cd -` | Returns to previous folder | Toggle between two locations |
+| `find . -name "<pattern>"` | Finds files by name | `find ~ -name "*.pdf"` |
+| `locate <filename>` | Quick file search (faster) | Run `sudo updatedb` first |
 
 ---
 
-### <<<<<<<<<< Getting Help
+### Getting Help
 
-**See what a command does**
-```bash
-man command-name
-```
-📌 Example: `man ls` shows the manual for ls command  
-💡 Press Q to quit the manual
-
-**Quick help for a command**
-```bash
-command-name --help
-```
-📌 Example: `cp --help`
-
-**See previous commands you've typed**
-```bash
-history
-```
-
-**Search your command history**
-```bash
-history | grep keyword
-```
-📌 Example: `history | grep install`
-
-**Repeat last command**
-```bash
-!!
-```
-
-**Clear the terminal screen**
-```bash
-clear
-```
-or press: `Ctrl+L`
+| Command | What It Does | Example |
+|---------|-------------|---------|
+| `man <command>` | Shows detailed manual for a command | `man ls` (press Q to quit) |
+| `<command> --help` | Shows quick help summary | `cp --help` |
+| `history` | Shows previously typed commands | View your command history |
+| `history \| grep <keyword>` | Searches command history | `history \| grep install` |
+| `!!` | Repeats last command | Quick way to re-run |
+| `clear` or `Ctrl+L` | Clears the terminal screen | Cleans up your view |
 
 ---
 
@@ -274,263 +115,71 @@ Below is the comprehensive guide organized by category. Each section goes deeper
 
 ## 💻 System Information
 
-Commands to check your system's hardware, software, and specifications.
+### Basic System Info
 
-### Get System Details
+| Command | What It Does | When to Use | Common Options |
+|---------|-------------|-------------|----------------|
+| `uname -a` | Shows kernel and system architecture | Checking system type before installing software | `-r` (kernel only), `-m` (machine type) |
+| `lsb_release -a` | Displays Linux distribution details | Finding exact OS version for support | `-d` (description only) |
+| `hostnamectl` | Shows system hostname and OS info | Quick system overview | N/A |
 
-```bash
-# Display system information
-uname -a
-```
-**What it does**: Shows kernel name, version, and system architecture  
-**When to use**: Checking your system type before installing software  
-**Example Output**: `Linux zorin 5.15.0-76-generic x86_64`
+### Hardware Information
 
-```bash
-# Show distribution information
-lsb_release -a
-```
-**What it does**: Displays your Linux distribution details (name, version, codename)  
-**When to use**: Finding your exact OS version for support or compatibility
+| Command | What It Does | When to Use | Common Options |
+|---------|-------------|-------------|----------------|
+| `lscpu` | Shows CPU details (cores, threads, cache) | Checking processor specs | `-e` (extended format) |
+| `lshw` | Lists complete hardware configuration | Getting detailed hardware info | `-short` (brief), `-html` (web format) |
+| `lspci` | Lists PCI devices (GPU, network cards) | Checking graphics/network hardware | `-v` (verbose) |
+| `lsusb` | Shows connected USB devices | Verifying USB device detection | `-v` (verbose) |
+| `lsblk` | Lists all storage devices | Viewing disk structure | `-f` (filesystems) |
 
-```bash
-# Display detailed hardware information
-lscpu
-```
-**What it does**: Shows CPU architecture, cores, threads, and cache information  
-**When to use**: Checking your processor specs before gaming or heavy tasks
+### Memory and Storage
 
-```bash
-# Show memory usage
-free -h
-```
-**What it does**: Displays how much RAM and swap space you're using  
-**When to use**: Checking if you need more RAM or why system is slow  
-**Common options**: 
-- `-h` = human-readable (shows GB/MB instead of bytes)
-- `-m` = show in megabytes
-- `-g` = show in gigabytes
-
-```bash
-# Display disk usage
-df -h
-```
-**What it does**: Shows how much disk space is used and available on each drive  
-**When to use**: Checking if you're running out of storage space  
-**Common options**: 
-- `-h` = human-readable sizes
-- `-T` = show filesystem type
-
-```bash
-# Show detailed hardware information
-lshw
-```
-**What it does**: Lists complete hardware configuration  
-**When to use**: Getting detailed info about all your hardware  
-**How to use**: `sudo lshw -short` (needs admin rights)
-
-```bash
-# Display PCI devices
-lspci
-```
-**What it does**: Lists all PCI devices (graphics cards, network adapters, etc.)  
-**When to use**: Checking what graphics card or network card you have
-
-```bash
-# Show USB devices
-lsusb
-```
-**What it does**: Lists all USB devices connected to your system  
-**When to use**: Checking if your USB device is detected
-
-```bash
-# Check system uptime
-uptime
-```
-**What it does**: Shows how long system has been running and current load  
-**When to use**: Checking if you need to restart after updates
+| Command | What It Does | When to Use | Common Options |
+|---------|-------------|-------------|----------------|
+| `free -h` | Shows RAM and swap usage | Checking available memory | `-m` (MB), `-g` (GB) |
+| `df -h` | Displays disk space usage | Checking storage availability | `-T` (show filesystem type) |
+| `uptime` | Shows system uptime and load | Checking system stability | N/A |
 
 ---
 
 ## 📦 Package Management
 
-Zorin OS uses **APT** (Advanced Package Tool) for installing and managing software.
+### Update and Upgrade
 
-> 💡 **Think of APT like an app store**: It downloads, installs, and updates all your programs from a central repository.
+| Command | What It Does | When to Use | Notes |
+|---------|-------------|-------------|-------|
+| `sudo apt update` | Refreshes package lists | Before installing/upgrading anything | Doesn't install updates |
+| `sudo apt upgrade` | Upgrades all installed packages | Weekly system maintenance | Won't remove packages |
+| `sudo apt full-upgrade` | Full system upgrade (can remove packages) | Monthly or after major updates | Handles dependencies better |
+| `sudo apt dist-upgrade` | Upgrades to new OS version | Major version releases | Research first! |
 
-### Update and Upgrade System
+### Install and Remove
 
-```bash
-# Update package lists
-sudo apt update
-```
-**What it does**: Refreshes the list of available software and their versions  
-**When to use**: ALWAYS run this first before installing anything or upgrading  
-**Why**: Makes sure you get the latest version of software
+| Command | What It Does | When to Use | Examples |
+|---------|-------------|-------------|----------|
+| `sudo apt install <package>` | Installs a program | Installing new software | `sudo apt install vlc gimp` |
+| `sudo apt remove <package>` | Uninstalls program (keeps settings) | Temporary removal | `sudo apt remove firefox` |
+| `sudo apt purge <package>` | Completely removes program + settings | Clean removal | `sudo apt purge firefox` |
+| `sudo apt autoremove` | Removes unused dependencies | After removing software | Frees disk space |
 
-```bash
-# Upgrade installed packages
-sudo apt upgrade
-```
-**What it does**: Updates all your installed programs to their newest versions  
-**When to use**: Weekly, to keep your system secure and up-to-date  
-**Important**: This won't remove any packages
+### Search and Information
 
-```bash
-# Full system upgrade
-sudo apt full-upgrade
-```
-**What it does**: Like upgrade, but can also remove old packages if needed  
-**When to use**: Monthly system maintenance or after major updates  
-**Why different**: Handles complex dependency changes better
-
-```bash
-# One-liner: Update and upgrade together
-sudo apt update && sudo apt upgrade -y
-```
-**What it does**: Updates the list then upgrades everything automatically  
-**When to use**: Quick system update (the `-y` means "yes to all")
-
-```bash
-# Distribution upgrade
-sudo apt dist-upgrade
-```
-**What it does**: Upgrades to a new OS version  
-**When to use**: When Zorin releases a new major version  
-**Warning**: Research first! This is a big change
-
----
-
-### Install and Remove Software
-
-```bash
-# Install a package
-sudo apt install package_name
-```
-**What it does**: Downloads and installs a program  
-**Example**: `sudo apt install vlc` installs VLC media player  
-**Example**: `sudo apt install gimp` installs GIMP image editor
-
-```bash
-# Install multiple packages at once
-sudo apt install package1 package2 package3
-```
-**What it does**: Installs several programs in one command  
-**Example**: `sudo apt install git curl wget` installs three tools at once  
-**Why useful**: Saves time when setting up a new system
-
-```bash
-# Remove a package
-sudo apt remove package_name
-```
-**What it does**: Uninstalls a program but keeps its settings  
-**When to use**: When you might reinstall the program later  
-**Example**: `sudo apt remove vlc`
-
-```bash
-# Completely remove a package
-sudo apt purge package_name
-```
-**What it does**: Uninstalls a program AND deletes all its settings  
-**When to use**: When you want a fresh start or freeing maximum space  
-**Example**: `sudo apt purge firefox`
-
-```bash
-# Remove unused dependencies
-sudo apt autoremove
-```
-**What it does**: Removes leftover packages that are no longer needed  
-**When to use**: After removing software, to clean up  
-**Why important**: Frees up disk space
-
-```bash
-# Complete cleanup command
-sudo apt autoremove && sudo apt autoclean
-```
-**What it does**: Removes unused packages AND clears download cache  
-**When to use**: Monthly maintenance to free disk space
-
----
-
-### Search and Get Information
-
-```bash
-# Search for packages
-apt search keyword
-```
-**What it does**: Finds programs matching your search  
-**Example**: `apt search video editor` finds video editing software  
-**Example**: `apt search screenshot` finds screenshot tools  
-**Note**: You don't need `sudo` for searching
-
-```bash
-# Show package information
-apt show package_name
-```
-**What it does**: Shows details about a program (description, version, size)  
-**When to use**: Before installing, to see what the program does  
-**Example**: `apt show gimp`
-
-```bash
-# List installed packages
-apt list --installed
-```
-**What it does**: Shows every program you have installed  
-**When to use**: Checking what's on your system  
-**Tip**: Pipe to grep to search: `apt list --installed | grep vlc`
-
-```bash
-# List upgradable packages
-apt list --upgradable
-```
-**What it does**: Shows which programs have updates available  
-**When to use**: After `apt update`, to see what will be upgraded
-
-```bash
-# Check if a package is installed
-dpkg -l | grep package_name
-```
-**What it does**: Searches your installed packages  
-**Example**: `dpkg -l | grep firefox` checks if Firefox is installed
-
----
+| Command | What It Does | When to Use | Notes |
+|---------|-------------|-------------|-------|
+| `apt search <keyword>` | Searches for packages | Finding software | No sudo needed |
+| `apt show <package>` | Shows package details | Before installing | Displays description, size, version |
+| `apt list --installed` | Lists all installed packages | System audit | Pipe to grep for searching |
+| `apt list --upgradable` | Shows available updates | After `apt update` | See what will upgrade |
 
 ### Fix Problems
 
-```bash
-# Fix broken packages
-sudo apt --fix-broken install
-```
-**What it does**: Repairs installation problems  
-**When to use**: When installations fail or system says packages are broken  
-**Also known as**: `sudo apt -f install`
-
-```bash
-# Reconfigure packages
-sudo dpkg --configure -a
-```
-**What it does**: Completes incomplete package configurations  
-**When to use**: When installations were interrupted
-
----
-
-### Clean Up Disk Space
-
-```bash
-# Clean package cache
-sudo apt clean
-```
-**What it does**: Deletes ALL downloaded package files  
-**Space saved**: Can free several GB  
-**Safe**: Yes, packages can be re-downloaded if needed
-
-```bash
-# Remove old package versions
-sudo apt autoclean
-```
-**What it does**: Removes only outdated package files  
-**When to use**: Prefer this over `clean` for regular maintenance  
-**Why**: Keeps recent files in case you need to reinstall
+| Command | What It Does | When to Use |
+|---------|-------------|-------------|
+| `sudo apt --fix-broken install` | Repairs broken packages | Installation failures |
+| `sudo dpkg --configure -a` | Completes interrupted installations | After interrupted installs |
+| `sudo apt clean` | Clears all cached packages | Free several GB |
+| `sudo apt autoclean` | Removes old cached packages only | Regular maintenance |
 
 ---
 
@@ -538,128 +187,46 @@ sudo apt autoclean
 
 ### Navigation
 
-```bash
-# Print working directory
-pwd
-```
-**Purpose**: Shows the current directory path
+| Command | What It Does | Shortcuts & Tips |
+|---------|-------------|------------------|
+| `pwd` | Prints current directory path | Shows where you are |
+| `cd <path>` | Changes directory | `cd ~` (home), `cd ..` (up), `cd -` (previous) |
+| `ls` | Lists directory contents | `-l` (detailed), `-a` (hidden), `-h` (sizes) |
+| `ls -lah` | Detailed list with hidden files | Most useful ls combination |
+| `ls -lt` | Lists sorted by modification time | Find recent files |
+| `ls -lS` | Lists sorted by size | Find large files |
 
-```bash
-# Change directory
-cd /path/to/directory
-```
-**Purpose**: Navigates to specified directory  
-**Shortcuts**: `cd ~` (home), `cd ..` (parent), `cd -` (previous)
+### Creating and Copying
 
-```bash
-# List directory contents
-ls
-```
-**Purpose**: Lists files and directories  
-**Options**: `-l` (detailed), `-a` (show hidden), `-h` (human-readable sizes), `-t` (sort by time), `-R` (recursive)
+| Command | What It Does | Examples | Options |
+|---------|-------------|----------|---------|
+| `mkdir <name>` | Creates directory | `mkdir Projects` | `-p` (create parents) |
+| `mkdir -p <path>` | Creates nested directories | `mkdir -p a/b/c` | Creates all at once |
+| `touch <file>` | Creates empty file | `touch notes.txt` | Updates timestamp if exists |
+| `cp <src> <dst>` | Copies file | `cp file.txt backup.txt` | `-i` (confirm), `-v` (verbose) |
+| `cp -r <src> <dst>` | Copies directory recursively | `cp -r dir/ backup/` | Required for directories |
 
-**Common combinations**:
-```bash
-ls -lah    # Detailed list with hidden files and human-readable sizes
-ls -lt     # Sort by modification time
-ls -lS     # Sort by size
-```
+### Moving and Deleting
 
-### Creating Files and Directories
+| Command | What It Does | Examples | ⚠️ Warnings |
+|---------|-------------|----------|-----------|
+| `mv <old> <new>` | Moves or renames | `mv file.txt docs/` | Can overwrite! |
+| `rm <file>` | Removes file | `rm test.txt` | Permanent deletion! |
+| `rm -r <dir>` | Removes directory | `rm -r folder/` | Deletes all contents! |
+| `rm -rf <dir>` | Force remove directory | Use with caution | No confirmation! |
+| `rmdir <dir>` | Removes empty directory | `rmdir temp/` | Only works if empty |
 
-```bash
-# Create a new directory
-mkdir directory_name
-```
-**Purpose**: Creates a new directory  
-**Options**: `-p` (create parent directories)  
-**Example**: `mkdir -p project/src/components`
+### Viewing Files
 
-```bash
-# Create an empty file
-touch filename.txt
-```
-**Purpose**: Creates a new empty file or updates timestamp of existing file
-
-### Copying and Moving
-
-```bash
-# Copy files
-cp source.txt destination.txt
-```
-**Purpose**: Copies a file  
-**Options**: `-r` (recursive for directories), `-i` (interactive prompt), `-v` (verbose)
-
-```bash
-# Copy directory
-cp -r source_dir/ destination_dir/
-```
-**Purpose**: Copies a directory and all its contents
-
-```bash
-# Move or rename
-mv oldname.txt newname.txt
-```
-**Purpose**: Moves or renames files/directories  
-**Example (move)**: `mv file.txt /home/user/Documents/`
-
-### Deleting
-
-```bash
-# Remove file
-rm filename.txt
-```
-**Purpose**: Deletes a file  
-**Options**: `-i` (confirm before delete), `-f` (force), `-r` (recursive for directories)
-
-```bash
-# Remove empty directory
-rmdir directory_name
-```
-**Purpose**: Removes an empty directory
-
-```bash
-# Remove directory with contents
-rm -r directory_name
-```
-**Purpose**: Recursively removes directory and all contents  
-**Warning**: Use with caution, especially with `-f` flag
-
-### Viewing File Contents
-
-```bash
-# Display entire file
-cat filename.txt
-```
-**Purpose**: Prints entire file content to terminal
-
-```bash
-# View file page by page
-less filename.txt
-```
-**Purpose**: Opens file in a pager (navigate with arrows, q to quit)  
-**Alternative**: `more filename.txt`
-
-```bash
-# Show first 10 lines
-head filename.txt
-```
-**Purpose**: Displays first lines of a file  
-**Options**: `-n 20` (show first 20 lines)
-
-```bash
-# Show last 10 lines
-tail filename.txt
-```
-**Purpose**: Displays last lines of a file  
-**Options**: `-f` (follow file updates in real-time), `-n 20` (last 20 lines)
-
-```bash
-# Count lines, words, characters
-wc filename.txt
-```
-**Purpose**: Word count statistics  
-**Options**: `-l` (lines only), `-w` (words only), `-c` (characters)
+| Command | What It Does | When to Use | Controls |
+|---------|-------------|-------------|----------|
+| `cat <file>` | Displays entire file | Small files | N/A |
+| `less <file>` | Views file page by page | Large files | Arrows, Q to quit |
+| `more <file>` | Similar to less (older) | Alternative pager | Space, Q to quit |
+| `head <file>` | Shows first 10 lines | Quick preview | `-n 20` (first 20) |
+| `tail <file>` | Shows last 10 lines | Log files | `-f` (follow updates) |
+| `tail -f <file>` | Follows file updates | Live log monitoring | Ctrl+C to stop |
+| `wc <file>` | Counts lines, words, characters | File statistics | `-l` (lines only) |
 
 ---
 
@@ -667,76 +234,23 @@ wc filename.txt
 
 ### Find Files
 
-```bash
-# Find files by name
-find /path -name "filename.txt"
-```
-**Purpose**: Searches for files matching exact name  
-**Example**: `find /home -name "*.pdf"` (find all PDFs in home)
+| Command | What It Does | Examples | Options |
+|---------|-------------|----------|---------|
+| `find <path> -name "<pattern>"` | Searches by name | `find ~ -name "*.pdf"` | Case-sensitive |
+| `find <path> -iname "<pattern>"` | Case-insensitive search | `find . -iname "*.JPG"` | Ignores case |
+| `find <path> -type f` | Finds files only | `find . -type f` | Excludes directories |
+| `find <path> -type d` | Finds directories only | `find . -type d` | Excludes files |
+| `find <path> -size +100M` | Finds files larger than 100MB | `find ~ -size +1G` | `+` (greater), `-` (smaller) |
+| `find <path> -mtime -7` | Modified in last 7 days | `find . -mtime -1` | Recent files |
 
-```bash
-# Find files case-insensitive
-find /path -iname "filename.txt"
-```
-**Purpose**: Searches for files ignoring case
+### Quick Search
 
-```bash
-# Find by type
-find /path -type f    # files only
-find /path -type d    # directories only
-```
-**Purpose**: Filters search by file type
-
-```bash
-# Find by size
-find /path -size +100M
-```
-**Purpose**: Finds files larger than 100MB  
-**Options**: `+` (greater), `-` (smaller), exact size without symbol
-
-```bash
-# Find and execute command
-find /path -name "*.log" -exec rm {} \;
-```
-**Purpose**: Finds files and executes command on each  
-**Example**: Delete all .log files
-
-```bash
-# Find recently modified files
-find /path -mtime -7
-```
-**Purpose**: Finds files modified in last 7 days  
-**Options**: `-mtime` (modified), `-atime` (accessed), `-ctime` (changed)
-
-### Locate Files (Fast Search)
-
-```bash
-# Quick file search
-locate filename
-```
-**Purpose**: Quickly finds files using pre-built database  
-**Note**: Run `sudo updatedb` to update database first
-
-```bash
-# Case-insensitive locate
-locate -i filename
-```
-**Purpose**: Searches ignoring case
-
-### Which and Whereis
-
-```bash
-# Find command location
-which command_name
-```
-**Purpose**: Shows the full path of shell commands  
-**Example**: `which python3`
-
-```bash
-# Find binary, source, and manual
-whereis command_name
-```
-**Purpose**: Locates binary, source code, and manual pages
+| Command | What It Does | When to Use | Notes |
+|---------|-------------|-------------|-------|
+| `locate <pattern>` | Fast database search | Quick file finding | Run `sudo updatedb` first |
+| `locate -i <pattern>` | Case-insensitive locate | Flexible searching | Searches pre-built index |
+| `which <command>` | Finds command location | Check if installed | `which python3` |
+| `whereis <command>` | Finds binary, source, manual | Complete command info | `whereis ls` |
 
 ---
 
@@ -744,71 +258,44 @@ whereis command_name
 
 ### Understanding Permissions
 
-Permissions format: `rwxrwxrwx` (read, write, execute for owner, group, others)
+**Format**: `rwxrwxrwx` (owner, group, others)
 - `r` (read) = 4
-- `w` (write) = 2
+- `w` (write) = 2  
 - `x` (execute) = 1
+
+**Common Permission Values**:
+- `644` - Regular files (rw-r--r--)
+- `755` - Executables/directories (rwxr-xr-x)
+- `700` - Private files (rwx------)
+- `777` - Full access (not recommended!)
 
 ### Changing Permissions
 
-```bash
-# Change permissions with numbers
-chmod 755 filename.txt
-```
-**Purpose**: Sets permissions (owner: rwx, group: rx, others: rx)  
-**Common values**: 
-- `644` - Files (rw-r--r--)
-- `755` - Executables and directories (rwxr-xr-x)
-- `700` - Private files (rwx------)
+| Command | What It Does | Examples | Notes |
+|---------|-------------|----------|-------|
+| `chmod 755 <file>` | Sets permissions numerically | `chmod 644 file.txt` | Owner: rwx, Group/Other: rx |
+| `chmod u+x <file>` | Adds execute for user | `chmod u+x script.sh` | Makes script executable |
+| `chmod g-w <file>` | Removes write for group | `chmod g-w doc.txt` | Group can't modify |
+| `chmod o+r <file>` | Adds read for others | `chmod o+r public.txt` | Others can read |
+| `chmod -R 755 <dir>` | Recursive permission change | `chmod -R 755 project/` | Changes dir and contents |
 
-```bash
-# Change permissions with symbols
-chmod u+x script.sh      # Add execute for user
-chmod g-w file.txt       # Remove write for group
-chmod o+r document.txt   # Add read for others
-```
-**Purpose**: Modifies specific permission bits  
-**Symbols**: `u` (user), `g` (group), `o` (others), `a` (all)
-
-```bash
-# Recursive permission change
-chmod -R 755 directory/
-```
-**Purpose**: Changes permissions for directory and all contents
+**Symbols**: `u` (user/owner), `g` (group), `o` (others), `a` (all)
 
 ### Changing Ownership
 
-```bash
-# Change file owner
-sudo chown username filename.txt
-```
-**Purpose**: Changes file owner
-
-```bash
-# Change owner and group
-sudo chown username:groupname filename.txt
-```
-**Purpose**: Changes both owner and group
-
-```bash
-# Recursive ownership change
-sudo chown -R username:groupname directory/
-```
-**Purpose**: Changes ownership for directory and all contents
+| Command | What It Does | When to Use | Examples |
+|---------|-------------|-------------|----------|
+| `sudo chown <user> <file>` | Changes file owner | Transfer ownership | `sudo chown john file.txt` |
+| `sudo chown <user>:<group> <file>` | Changes owner and group | Complete ownership change | `sudo chown john:staff file.txt` |
+| `sudo chown -R <user> <dir>` | Recursive ownership change | Directory trees | `sudo chown -R john project/` |
+| `sudo chgrp <group> <file>` | Changes group only | Group reassignment | `sudo chgrp staff file.txt` |
 
 ### View Permissions
 
-```bash
-# List with permissions
-ls -l filename.txt
-```
-**Purpose**: Shows permissions, owner, group, size, and modification date
-
-```bash
-# Show file status
-stat filename.txt
-```
-**Purpose**: Displays detailed file information including permissions in octal
+| Command | What It Does | Output |
+|---------|-------------|--------|
+| `ls -l <file>` | Shows permissions, owner, group | `-rw-r--r-- 1 user group 1024 Jan 1 file.txt` |
+| `stat <file>` | Detailed file information | Includes octal permissions |
 
 ---
 
@@ -816,112 +303,53 @@ stat filename.txt
 
 ### Grep (Search Text)
 
-```bash
-# Search for pattern in file
-grep "search_term" filename.txt
-```
-**Purpose**: Finds lines containing the search term  
-**Options**: `-i` (ignore case), `-v` (invert match), `-n` (line numbers), `-r` (recursive)
-
-```bash
-# Search recursively in directory
-grep -r "search_term" /path/to/directory
-```
-**Purpose**: Searches all files in directory and subdirectories
-
-```bash
-# Search with context
-grep -C 3 "search_term" filename.txt
-```
-**Purpose**: Shows 3 lines before and after match  
-**Options**: `-A 3` (after), `-B 3` (before)
-
-```bash
-# Count matches
-grep -c "search_term" filename.txt
-```
-**Purpose**: Counts number of matching lines
+| Command | What It Does | Examples | Options |
+|---------|-------------|----------|---------|
+| `grep "<term>" <file>` | Searches for text in file | `grep "error" log.txt` | Basic search |
+| `grep -i "<term>" <file>` | Case-insensitive search | `grep -i "Error" log.txt` | Ignores case |
+| `grep -r "<term>" <dir>` | Recursive directory search | `grep -r "TODO" src/` | Searches all files |
+| `grep -n "<term>" <file>` | Shows line numbers | `grep -n "error" log.txt` | With line numbers |
+| `grep -v "<term>" <file>` | Inverts match (excludes) | `grep -v "debug" log.txt` | Shows non-matching lines |
+| `grep -c "<term>" <file>` | Counts matches | `grep -c "error" log.txt` | Number of matches |
+| `grep -A 3 "<term>" <file>` | Shows 3 lines after match | Context after | `-B 3` (before), `-C 3` (both) |
 
 ### Sed (Stream Editor)
 
-```bash
-# Replace text in file
-sed 's/old_text/new_text/' filename.txt
-```
-**Purpose**: Replaces first occurrence on each line
-
-```bash
-# Replace all occurrences
-sed 's/old_text/new_text/g' filename.txt
-```
-**Purpose**: Replaces all occurrences globally
-
-```bash
-# Replace and save changes
-sed -i 's/old_text/new_text/g' filename.txt
-```
-**Purpose**: Edits file in-place
-
-```bash
-# Delete lines containing pattern
-sed '/pattern/d' filename.txt
-```
-**Purpose**: Removes lines matching pattern
+| Command | What It Does | Examples | Notes |
+|---------|-------------|----------|-------|
+| `sed 's/old/new/' <file>` | Replaces first occurrence per line | `sed 's/cat/dog/' pets.txt` | Not saved |
+| `sed 's/old/new/g' <file>` | Replaces all occurrences | `sed 's/cat/dog/g' pets.txt` | Global replace |
+| `sed -i 's/old/new/g' <file>` | Replaces and saves | `sed -i 's/old/new/g' config.txt` | Edits in-place |
+| `sed '/pattern/d' <file>` | Deletes matching lines | `sed '/^#/d' file.txt` | Removes comments |
+| `sed -n '5,10p' <file>` | Prints lines 5-10 | `sed -n '1,5p' file.txt` | Range print |
 
 ### Awk (Text Processing)
 
-```bash
-# Print specific column
-awk '{print $1}' filename.txt
-```
-**Purpose**: Prints first column of each line
-
-```bash
-# Print with condition
-awk '$3 > 100 {print $1, $3}' data.txt
-```
-**Purpose**: Prints columns 1 and 3 where column 3 is greater than 100
-
-```bash
-# Use custom delimiter
-awk -F: '{print $1}' /etc/passwd
-```
-**Purpose**: Prints first field using colon as separator
+| Command | What It Does | Examples | Notes |
+|---------|-------------|----------|-------|
+| `awk '{print $1}' <file>` | Prints first column | `awk '{print $1}' data.txt` | Space-delimited |
+| `awk '{print $1,$3}' <file>` | Prints columns 1 and 3 | Multiple columns | Comma separates |
+| `awk '$3 > 100' <file>` | Filters by condition | `awk '$2 == "active"' status.txt` | Conditional output |
+| `awk -F: '{print $1}' <file>` | Custom delimiter | `awk -F: '{print $1}' /etc/passwd` | Colon delimiter |
 
 ### Sort and Unique
 
-```bash
-# Sort lines
-sort filename.txt
-```
-**Purpose**: Sorts lines alphabetically  
-**Options**: `-r` (reverse), `-n` (numeric), `-k2` (sort by column 2)
-
-```bash
-# Remove duplicate lines
-sort filename.txt | uniq
-```
-**Purpose**: Sorts and removes adjacent duplicates
-
-```bash
-# Count duplicate lines
-sort filename.txt | uniq -c
-```
-**Purpose**: Counts occurrence of each unique line
+| Command | What It Does | Examples | Options |
+|---------|-------------|----------|---------|
+| `sort <file>` | Sorts lines alphabetically | `sort names.txt` | `-r` (reverse) |
+| `sort -n <file>` | Numeric sort | `sort -n numbers.txt` | Sorts as numbers |
+| `sort -k2 <file>` | Sorts by column 2 | `sort -k2 data.txt` | Column-based sorting |
+| `sort <file> \| uniq` | Removes duplicate lines | Adjacent duplicates only | Sort first! |
+| `sort <file> \| uniq -c` | Counts occurrences | `sort names.txt \| uniq -c` | With count |
+| `sort <file> \| uniq -d` | Shows only duplicates | Find repeated lines | Must sort first |
 
 ### Cut (Extract Columns)
 
-```bash
-# Extract specific columns
-cut -d: -f1,3 /etc/passwd
-```
-**Purpose**: Extracts fields 1 and 3 using colon as delimiter
-
-```bash
-# Extract characters
-cut -c1-10 filename.txt
-```
-**Purpose**: Extracts characters 1 through 10 from each line
+| Command | What It Does | Examples | Notes |
+|---------|-------------|----------|-------|
+| `cut -d: -f1 <file>` | Extracts field 1 | `cut -d: -f1,3 /etc/passwd` | Colon delimiter |
+| `cut -c1-10 <file>` | Extracts characters 1-10 | `cut -c1-5 names.txt` | Character range |
+| `cut -f2,4 <file>` | Extracts fields 2 and 4 | `cut -f2,4 data.txt` | Tab-delimited default |
 
 ---
 
@@ -929,89 +357,41 @@ cut -c1-10 filename.txt
 
 ### Real-Time Monitoring
 
-```bash
-# Interactive process viewer
-top
-```
-**Purpose**: Shows real-time system resource usage  
-**Controls**: `q` (quit), `k` (kill process), `M` (sort by memory), `P` (sort by CPU)
+| Command | What It Does | Key Controls | Install |
+|---------|-------------|--------------|---------|
+| `top` | Interactive process viewer | `q` (quit), `k` (kill), `M` (sort by memory), `P` (CPU) | Pre-installed |
+| `htop` | Enhanced process viewer | Mouse support, F9 (kill), F6 (sort) | `sudo apt install htop` |
+| `vmstat 2` | Virtual memory statistics | Updates every 2 seconds | Pre-installed |
+| `iostat` | CPU and disk I/O stats | Shows disk performance | `sudo apt install sysstat` |
+| `watch -n 2 <command>` | Repeats command every 2 seconds | `watch -n 1 free -h` | Pre-installed |
 
-```bash
-# Enhanced process viewer
-htop
-```
-**Purpose**: User-friendly alternative to top with colors and mouse support  
-**Install**: `sudo apt install htop`
+### Memory Monitoring
 
-```bash
-# Monitor system resources
-vmstat 2
-```
-**Purpose**: Reports virtual memory statistics every 2 seconds
-
-```bash
-# I/O statistics
-iostat
-```
-**Purpose**: Shows CPU and disk I/O statistics  
-**Install**: `sudo apt install sysstat`
-
-### Memory Usage
-
-```bash
-# Display memory usage
-free -h
-```
-**Purpose**: Shows RAM and swap usage in human-readable format
-
-```bash
-# Show memory usage continuously
-watch -n 2 free -h
-```
-**Purpose**: Updates memory display every 2 seconds
+| Command | What It Does | When to Use | Options |
+|---------|-------------|-------------|---------|
+| `free -h` | Shows RAM and swap usage | Check memory availability | `-m` (MB), `-g` (GB) |
+| `watch -n 2 free -h` | Live memory monitoring | Continuous updates | Updates every 2 seconds |
 
 ### Disk Usage
 
-```bash
-# Show directory sizes
-du -h directory_name
-```
-**Purpose**: Displays disk usage of directory  
-**Options**: `-s` (summary), `-a` (all files), `--max-depth=1` (limit depth)
-
-```bash
-# Show largest directories
-du -h --max-depth=1 | sort -hr
-```
-**Purpose**: Lists directories sorted by size
-
-```bash
-# Disk usage with ncurses interface
-ncdu /
-```
-**Purpose**: Interactive disk usage analyzer  
-**Install**: `sudo apt install ncdu`
+| Command | What It Does | Examples | Options |
+|---------|-------------|----------|---------|
+| `du -h <dir>` | Shows directory disk usage | `du -h Documents/` | Human-readable sizes |
+| `du -sh <dir>` | Summary of directory size | `du -sh Downloads/` | Total size only |
+| `du -h --max-depth=1` | Limits subdirectory depth | `du -h --max-depth=1 ~` | One level deep |
+| `du -h \| sort -hr` | Largest directories first | Find space hogs | Sorted by size |
+| `ncdu /` | Interactive disk analyzer | Explore disk usage | `sudo apt install ncdu` |
 
 ### System Logs
 
-```bash
-# View system log
-journalctl
-```
-**Purpose**: Views systemd journal logs  
-**Options**: `-f` (follow), `-u service_name` (specific service), `--since today`
-
-```bash
-# View kernel messages
-dmesg
-```
-**Purpose**: Displays kernel ring buffer messages
-
-```bash
-# View authentication log
-sudo tail -f /var/log/auth.log
-```
-**Purpose**: Monitors authentication attempts in real-time
+| Command | What It Does | When to Use | Options |
+|---------|-------------|-------------|---------|
+| `journalctl` | Views systemd journal logs | System troubleshooting | `-f` (follow) |
+| `journalctl -f` | Follows log in real-time | Live monitoring | Like `tail -f` |
+| `journalctl -u <service>` | Shows service logs | Specific service | `journalctl -u apache2` |
+| `journalctl --since today` | Today's logs only | Recent events | Time-based filter |
+| `dmesg` | Kernel ring buffer messages | Hardware/driver issues | Boot messages |
+| `sudo tail -f /var/log/auth.log` | Authentication log | Login monitoring | Live updates |
 
 ---
 
@@ -1019,97 +399,43 @@ sudo tail -f /var/log/auth.log
 
 ### List Processes
 
-```bash
-# List all processes
-ps aux
-```
-**Purpose**: Shows all running processes with detailed information  
-**Columns**: USER, PID, CPU%, MEM%, COMMAND
-
-```bash
-# List processes in tree format
-pstree
-```
-**Purpose**: Displays processes in hierarchical tree structure
-
-```bash
-# Find specific process
-ps aux | grep process_name
-```
-**Purpose**: Searches for specific process
-
-```bash
-# Show processes for current user
-ps ux
-```
-**Purpose**: Lists processes owned by current user
+| Command | What It Does | Output Details | Options |
+|---------|-------------|----------------|---------|
+| `ps aux` | Shows all processes | USER, PID, CPU%, MEM%, COMMAND | Full list |
+| `ps ux` | Shows your processes | Current user only | Personal processes |
+| `ps aux \| grep <name>` | Finds specific process | `ps aux \| grep firefox` | Search processes |
+| `pstree` | Process tree view | Hierarchical display | Parent-child relationships |
+| `top` | Real-time process list | Interactive, updates automatically | Press `q` to quit |
 
 ### Kill Processes
 
-```bash
-# Terminate process by PID
-kill PID
-```
-**Purpose**: Sends TERM signal to process (graceful shutdown)
+| Command | What It Does | When to Use | Signal |
+|---------|-------------|-------------|--------|
+| `kill <PID>` | Terminates process gracefully | Normal process ending | TERM (15) |
+| `kill -9 <PID>` | Forces immediate termination | Unresponsive processes | KILL (9) |
+| `killall <name>` | Kills all matching processes | `killall firefox` | By name |
+| `pkill <pattern>` | Kills processes by pattern | `pkill -i chrome` | Pattern matching |
+| `pkill -u <user>` | Kills user's processes | All processes by user | User-based |
 
-```bash
-# Force kill process
-kill -9 PID
-```
-**Purpose**: Sends KILL signal (immediate termination)
-
-```bash
-# Kill process by name
-killall process_name
-```
-**Purpose**: Terminates all processes with matching name
-
-```bash
-# Interactive kill
-pkill -i process_name
-```
-**Purpose**: Kills processes matching pattern (case-insensitive with `-i`)
+**Finding PIDs**: Use `ps aux | grep <process>` or `pidof <process>`
 
 ### Background and Foreground
 
-```bash
-# Run command in background
-command &
-```
-**Purpose**: Starts command in background
-
-```bash
-# List background jobs
-jobs
-```
-**Purpose**: Shows current background jobs
-
-```bash
-# Bring job to foreground
-fg %1
-```
-**Purpose**: Brings job number 1 to foreground
-
-```bash
-# Send current process to background
-Ctrl+Z    # Suspend
-bg        # Continue in background
-```
-**Purpose**: Suspends current process and continues it in background
+| Command | What It Does | When to Use | Keys |
+|---------|-------------|-------------|------|
+| `<command> &` | Runs command in background | Long-running tasks | Append `&` |
+| `jobs` | Lists background jobs | View running jobs | Shows job numbers |
+| `fg %1` | Brings job 1 to foreground | Resume interactive work | Use job number |
+| `bg %1` | Continues job 1 in background | Resume suspended job | After Ctrl+Z |
+| `Ctrl+Z` | Suspends current process | Pause running program | Then use `bg` |
+| `disown` | Detaches job from shell | Keep running after logout | After backgrounding |
 
 ### Process Priority
 
-```bash
-# Start with priority
-nice -n 10 command
-```
-**Purpose**: Starts command with specified priority (-20 to 19, higher = lower priority)
-
-```bash
-# Change priority of running process
-renice -n 5 -p PID
-```
-**Purpose**: Changes priority of running process
+| Command | What It Does | Priority Range | Notes |
+|---------|-------------|----------------|-------|
+| `nice -n 10 <command>` | Starts with priority | -20 (highest) to 19 (lowest) | Higher number = lower priority |
+| `renice -n 5 -p <PID>` | Changes running process priority | Same range | Requires appropriate permissions |
 
 ---
 
@@ -1117,125 +443,55 @@ renice -n 5 -p PID
 
 ### Network Configuration
 
-```bash
-# Show IP addresses
-ip addr show
-```
-**Purpose**: Displays all network interfaces and IP addresses  
-**Alternative**: `ip a`
-
-```bash
-# Show routing table
-ip route show
-```
-**Purpose**: Displays routing table
-
-```bash
-# Legacy network info
-ifconfig
-```
-**Purpose**: Shows network interface configuration  
-**Install**: `sudo apt install net-tools`
+| Command | What It Does | When to Use | Alternative |
+|---------|-------------|-------------|-------------|
+| `ip addr show` | Shows IP addresses | Check network config | `ip a` (short) |
+| `ip route show` | Displays routing table | View network routes | `ip r` (short) |
+| `ifconfig` | Legacy network info | Older systems | `sudo apt install net-tools` |
+| `ip link show` | Shows network interfaces | Check interface status | Interface details |
 
 ### Network Connectivity
 
-```bash
-# Test connectivity
-ping google.com
-```
-**Purpose**: Sends ICMP packets to test network connectivity  
-**Options**: `-c 4` (send 4 packets then stop)
-
-```bash
-# Trace route to host
-traceroute google.com
-```
-**Purpose**: Shows path packets take to destination  
-**Install**: `sudo apt install traceroute`
-
-```bash
-# DNS lookup
-nslookup google.com
-```
-**Purpose**: Queries DNS for domain information
-
-```bash
-# Detailed DNS lookup
-dig google.com
-```
-**Purpose**: Performs detailed DNS queries  
-**Install**: `sudo apt install dnsutils`
+| Command | What It Does | Examples | Options |
+|---------|-------------|----------|---------|
+| `ping <host>` | Tests connectivity | `ping google.com` | `-c 4` (4 packets) |
+| `ping -c 4 <host>` | Sends 4 packets and stops | `ping -c 10 8.8.8.8` | Limited ping |
+| `traceroute <host>` | Shows network path | `traceroute google.com` | `sudo apt install traceroute` |
+| `nslookup <domain>` | DNS lookup | `nslookup google.com` | Basic DNS query |
+| `dig <domain>` | Detailed DNS query | `dig google.com` | `sudo apt install dnsutils` |
+| `host <domain>` | Simple DNS lookup | `host google.com` | Quick DNS check |
 
 ### Network Monitoring
 
-```bash
-# Show network connections
-netstat -tuln
-```
-**Purpose**: Lists all listening ports and established connections  
-**Options**: `-t` (TCP), `-u` (UDP), `-l` (listening), `-n` (numeric)
-
-```bash
-# Modern alternative to netstat
-ss -tuln
-```
-**Purpose**: Faster and more detailed socket statistics
-
-```bash
-# Monitor bandwidth
-iftop
-```
-**Purpose**: Shows bandwidth usage by connection  
-**Install**: `sudo apt install iftop`, **Usage**: `sudo iftop`
-
-```bash
-# Network bandwidth monitor
-nload
-```
-**Purpose**: Displays incoming and outgoing traffic  
-**Install**: `sudo apt install nload`
+| Command | What It Does | Install | Usage |
+|---------|-------------|---------|-------|
+| `netstat -tuln` | Shows listening ports | `sudo apt install net-tools` | `-t` (TCP), `-u` (UDP), `-l` (listening), `-n` (numeric) |
+| `ss -tuln` | Modern netstat alternative | Pre-installed | Faster, more detailed |
+| `ss -tulnp` | Shows process using port | Need root | Includes program names |
+| `sudo iftop` | Bandwidth by connection | `sudo apt install iftop` | Real-time bandwidth |
+| `nload` | Network traffic monitor | `sudo apt install nload` | Visual bandwidth graph |
+| `nethogs` | Bandwidth by process | `sudo apt install nethogs` | Shows which app uses bandwidth |
 
 ### Download Files
 
-```bash
-# Download file
-wget https://example.com/file.zip
-```
-**Purpose**: Downloads files from the internet  
-**Options**: `-c` (continue), `-O` (output filename)
+| Command | What It Does | Examples | Options |
+|---------|-------------|----------|---------|
+| `wget <url>` | Downloads files | `wget https://example.com/file.zip` | `-c` (continue), `-O` (rename) |
+| `wget -c <url>` | Resumes interrupted download | Continue download | Auto-resume |
+| `curl -O <url>` | Downloads file | `curl -O https://example.com/file.zip` | `-L` (follow redirects) |
+| `curl -o <name> <url>` | Downloads as specified name | `curl -o file.zip <url>` | Custom filename |
 
-```bash
-# Alternative download tool
-curl -O https://example.com/file.zip
-```
-**Purpose**: Transfers data from URLs  
-**Options**: `-L` (follow redirects), `-o filename` (save as)
+### Firewall (UFW)
 
-### Firewall
-
-```bash
-# Show firewall status
-sudo ufw status
-```
-**Purpose**: Displays UFW (Uncomplicated Firewall) status
-
-```bash
-# Enable firewall
-sudo ufw enable
-```
-**Purpose**: Activates firewall
-
-```bash
-# Allow port
-sudo ufw allow 80/tcp
-```
-**Purpose**: Opens specific port
-
-```bash
-# Deny port
-sudo ufw deny 23/tcp
-```
-**Purpose**: Blocks specific port
+| Command | What It Does | Examples | Notes |
+|---------|-------------|----------|-------|
+| `sudo ufw status` | Shows firewall status | Check if enabled | Shows rules |
+| `sudo ufw enable` | Activates firewall | Enable protection | Enables rules |
+| `sudo ufw disable` | Deactivates firewall | Temporarily disable | Not recommended |
+| `sudo ufw allow 80/tcp` | Opens port 80 | `sudo ufw allow 22/tcp` | Web server |
+| `sudo ufw deny 23/tcp` | Blocks port 23 | Block telnet | Security |
+| `sudo ufw allow from 192.168.1.0/24` | Allows IP range | Allow subnet | Network-based |
+| `sudo ufw delete allow 80/tcp` | Removes rule | Delete existing rule | Rule management |
 
 ---
 
@@ -1243,74 +499,33 @@ sudo ufw deny 23/tcp
 
 ### Disk Information
 
-```bash
-# List block devices
-lsblk
-```
-**Purpose**: Shows all storage devices and partitions in tree format
-
-```bash
-# Show disk usage by filesystem
-df -h
-```
-**Purpose**: Displays disk space usage for all mounted filesystems
-
-```bash
-# Detailed disk info
-sudo fdisk -l
-```
-**Purpose**: Lists all disks and partitions with detailed information
+| Command | What It Does | When to Use | Options |
+|---------|-------------|-------------|---------|
+| `lsblk` | Shows all storage devices and partitions in tree format | View disk structure | `-f` (show filesystems) |
+| `df -h` | Displays disk space usage for all mounted filesystems | Check free space | `-T` (show filesystem type) |
+| `sudo fdisk -l` | Lists all disks and partitions with detailed information | Detailed disk info | Shows partition table |
 
 ### Mounting and Unmounting
 
-```bash
-# Mount a device
-sudo mount /dev/sdb1 /mnt/usb
-```
-**Purpose**: Mounts a partition to specified directory
-
-```bash
-# Unmount device
-sudo umount /mnt/usb
-```
-**Purpose**: Unmounts a mounted filesystem
-
-```bash
-# Show mounted filesystems
-mount | grep ^/dev
-```
-**Purpose**: Lists currently mounted devices
+| Command | What It Does | Examples | Notes |
+|---------|-------------|----------|-------|
+| `sudo mount /dev/sdb1 /mnt/usb` | Mounts a partition to specified directory | Mount USB drive | Create mount point first |
+| `sudo umount /mnt/usb` | Unmounts a mounted filesystem | Safely remove device | Must not be in use |
+| `mount \| grep ^/dev` | Lists currently mounted devices | Check what's mounted | Shows active mounts |
 
 ### Partition Management
 
-```bash
-# Interactive partition editor
-sudo fdisk /dev/sdb
-```
-**Purpose**: Manages disk partitions (create, delete, modify)
-
-```bash
-# GUI partition manager
-sudo gparted
-```
-**Purpose**: Graphical partition editor  
-**Install**: `sudo apt install gparted`
+| Command | What It Does | When to Use | Warning |
+|---------|-------------|-------------|---------|
+| `sudo fdisk /dev/sdb` | Interactive partition editor | Create, delete, modify partitions | ⚠️ Can destroy data! |
+| `sudo gparted` | Graphical partition editor | GUI partitioning | `sudo apt install gparted` |
 
 ### Check Disk Health
 
-```bash
-# Check filesystem
-sudo fsck /dev/sdb1
-```
-**Purpose**: Checks and repairs filesystem  
-**Warning**: Only run on unmounted filesystems
-
-```bash
-# SMART disk health
-sudo smartctl -a /dev/sda
-```
-**Purpose**: Shows disk health status  
-**Install**: `sudo apt install smartmontools`
+| Command | What It Does | When to Use | Install/Warning |
+|---------|-------------|-------------|-----------------|
+| `sudo fsck /dev/sdb1` | Checks and repairs filesystem | Fix filesystem errors | ⚠️ Only on unmounted filesystems |
+| `sudo smartctl -a /dev/sda` | Shows disk health status | Monitor disk health | `sudo apt install smartmontools` |
 
 ---
 
@@ -1318,84 +533,31 @@ sudo smartctl -a /dev/sda
 
 ### User Operations
 
-```bash
-# Add new user
-sudo adduser username
-```
-**Purpose**: Creates new user with home directory
-
-```bash
-# Delete user
-sudo deluser username
-```
-**Purpose**: Removes user account  
-**Options**: `--remove-home` (also delete home directory)
-
-```bash
-# Change password
-passwd
-```
-**Purpose**: Changes password for current user  
-**For other users**: `sudo passwd username`
-
-```bash
-# Switch user
-su - username
-```
-**Purpose**: Switches to another user account
-
-```bash
-# Execute command as another user
-sudo -u username command
-```
-**Purpose**: Runs command as specified user
+| Command | What It Does | Examples | Notes |
+|---------|-------------|----------|-------|
+| `sudo adduser <username>` | Creates new user with home directory | `sudo adduser john` | Interactive setup |
+| `sudo deluser <username>` | Removes user account | `sudo deluser john` | `--remove-home` to delete home dir |
+| `passwd` | Changes password for current user | Change your password | Interactive prompts |
+| `sudo passwd <username>` | Changes another user's password | `sudo passwd john` | Admin privilege required |
+| `su - <username>` | Switches to another user account | `su - john` | Full login environment |
+| `sudo -u <username> <cmd>` | Runs command as specified user | `sudo -u www-data ls /var/www` | Execute as different user |
 
 ### Group Operations
 
-```bash
-# Add new group
-sudo groupadd groupname
-```
-**Purpose**: Creates new group
-
-```bash
-# Add user to group
-sudo usermod -aG groupname username
-```
-**Purpose**: Adds user to supplementary group  
-**Note**: `-a` appends to existing groups, `-G` specifies groups
-
-```bash
-# Remove user from group
-sudo deluser username groupname
-```
-**Purpose**: Removes user from specified group
-
-```bash
-# List user's groups
-groups username
-```
-**Purpose**: Shows all groups user belongs to
+| Command | What It Does | Examples | Notes |
+|---------|-------------|----------|-------|
+| `sudo groupadd <group>` | Creates new group | `sudo groupadd developers` | System group creation |
+| `sudo usermod -aG <group> <user>` | Adds user to supplementary group | `sudo usermod -aG sudo john` | `-a` appends, `-G` specifies groups |
+| `sudo deluser <user> <group>` | Removes user from specified group | `sudo deluser john sudo` | Group membership removal |
+| `groups <username>` | Shows all groups user belongs to | `groups john` | List user's groups |
 
 ### User Information
 
-```bash
-# Show current user
-whoami
-```
-**Purpose**: Displays current username
-
-```bash
-# Show logged-in users
-who
-```
-**Purpose**: Lists all currently logged-in users
-
-```bash
-# Detailed user info
-id username
-```
-**Purpose**: Shows user ID, group ID, and groups
+| Command | What It Does | Output | When to Use |
+|---------|-------------|--------|-------------|
+| `whoami` | Displays current username | Your username | Quick identity check |
+| `who` | Lists all currently logged-in users | Users and login times | See who's logged in |
+| `id <username>` | Shows user ID, group ID, and groups | UID, GID, group list | Detailed user info |
 
 ---
 
@@ -1405,90 +567,36 @@ Zorin OS uses **systemd** for service management.
 
 ### Service Control
 
-```bash
-# Start a service
-sudo systemctl start service_name
-```
-**Purpose**: Starts a service  
-**Example**: `sudo systemctl start apache2`
-
-```bash
-# Stop a service
-sudo systemctl stop service_name
-```
-**Purpose**: Stops a running service
-
-```bash
-# Restart a service
-sudo systemctl restart service_name
-```
-**Purpose**: Stops and then starts a service
-
-```bash
-# Reload service configuration
-sudo systemctl reload service_name
-```
-**Purpose**: Reloads configuration without stopping service
+| Command | What It Does | Examples | When to Use |
+|---------|-------------|----------|-------------|
+| `sudo systemctl start <service>` | Starts a service | `sudo systemctl start apache2` | Start stopped service |
+| `sudo systemctl stop <service>` | Stops a running service | `sudo systemctl stop apache2` | Stop running service |
+| `sudo systemctl restart <service>` | Stops and then starts a service | `sudo systemctl restart nginx` | Apply config changes |
+| `sudo systemctl reload <service>` | Reloads configuration without stopping | `sudo systemctl reload nginx` | Update config without downtime |
 
 ### Service Status
 
-```bash
-# Check service status
-sudo systemctl status service_name
-```
-**Purpose**: Shows detailed status of a service
-
-```bash
-# Check if service is active
-systemctl is-active service_name
-```
-**Purpose**: Returns active/inactive status
-
-```bash
-# Check if service is enabled
-systemctl is-enabled service_name
-```
-**Purpose**: Returns enabled/disabled status
+| Command | What It Does | Output | When to Use |
+|---------|-------------|--------|-------------|
+| `sudo systemctl status <service>` | Shows detailed status of a service | Active/inactive, recent logs | Troubleshoot service issues |
+| `systemctl is-active <service>` | Returns active/inactive status | Simple yes/no | Quick status check |
+| `systemctl is-enabled <service>` | Returns enabled/disabled status | enabled/disabled | Check boot configuration |
 
 ### Enable/Disable Services
 
-```bash
-# Enable service at boot
-sudo systemctl enable service_name
-```
-**Purpose**: Configures service to start automatically at boot
-
-```bash
-# Disable service at boot
-sudo systemctl disable service_name
-```
-**Purpose**: Prevents service from starting at boot
-
-```bash
-# Enable and start service
-sudo systemctl enable --now service_name
-```
-**Purpose**: Enables service and starts it immediately
+| Command | What It Does | Examples | Purpose |
+|---------|-------------|----------|---------|
+| `sudo systemctl enable <service>` | Configures service to start at boot | `sudo systemctl enable apache2` | Auto-start on boot |
+| `sudo systemctl disable <service>` | Prevents service from starting at boot | `sudo systemctl disable apache2` | Don't auto-start |
+| `sudo systemctl enable --now <service>` | Enables and starts service immediately | `sudo systemctl enable --now nginx` | Enable + start in one command |
 
 ### List Services
 
-```bash
-# List all services
-systemctl list-units --type=service
-```
-**Purpose**: Shows all loaded services
-
-```bash
-# List running services
-systemctl list-units --type=service --state=running
-```
-**Purpose**: Shows only running services
-
-```bash
-# List failed services
-systemctl --failed
-```
-**Purpose**: Shows services that failed to start
+| Command | What It Does | When to Use | Output |
+|---------|-------------|-------------|--------|
+| `systemctl list-units --type=service` | Shows all loaded services | View all services | Complete service list |
+| `systemctl list-units --type=service --state=running` | Shows only running services | See active services | Running services only |
+| `systemctl --failed` | Shows services that failed to start | Troubleshoot boot issues | Failed services |
 
 ---
 
@@ -1496,99 +604,33 @@ systemctl --failed
 
 ### Tar Archives
 
-```bash
-# Create tar archive
-tar -cvf archive.tar directory/
-```
-**Purpose**: Creates uncompressed tar archive  
-**Options**: `-c` (create), `-v` (verbose), `-f` (filename)
-
-```bash
-# Create tar.gz (compressed)
-tar -czvf archive.tar.gz directory/
-```
-**Purpose**: Creates gzip-compressed tar archive  
-**Option**: `-z` (gzip compression)
-
-```bash
-# Create tar.bz2 (better compression)
-tar -cjvf archive.tar.bz2 directory/
-```
-**Purpose**: Creates bzip2-compressed tar archive  
-**Option**: `-j` (bzip2 compression)
-
-```bash
-# Extract tar archive
-tar -xvf archive.tar
-```
-**Purpose**: Extracts tar archive  
-**Option**: `-x` (extract)
-
-```bash
-# Extract tar.gz
-tar -xzvf archive.tar.gz
-```
-**Purpose**: Extracts gzip-compressed archive
-
-```bash
-# List archive contents
-tar -tvf archive.tar
-```
-**Purpose**: Lists files in archive without extracting  
-**Option**: `-t` (list)
-
-```bash
-# Extract to specific directory
-tar -xzvf archive.tar.gz -C /path/to/directory
-```
-**Purpose**: Extracts to specified location
+| Command | What It Does | Options Explained | Examples |
+|---------|-------------|-------------------|----------|
+| `tar -cvf archive.tar directory/` | Creates uncompressed tar archive | `-c` create, `-v` verbose, `-f` filename | Basic archive |
+| `tar -czvf archive.tar.gz directory/` | Creates gzip-compressed archive | `-z` gzip compression | Most common format |
+| `tar -cjvf archive.tar.bz2 directory/` | Creates bzip2-compressed archive | `-j` bzip2 (better compression) | Smaller size, slower |
+| `tar -xvf archive.tar` | Extracts tar archive | `-x` extract | Unpack archive |
+| `tar -xzvf archive.tar.gz` | Extracts gzip-compressed archive | Auto-detects compression | Extract .tar.gz |
+| `tar -tvf archive.tar` | Lists files without extracting | `-t` list contents | Preview archive |
+| `tar -xzvf archive.tar.gz -C /path/` | Extracts to specific directory | `-C` change directory | Extract to location |
 
 ### Zip Archives
 
-```bash
-# Create zip archive
-zip -r archive.zip directory/
-```
-**Purpose**: Creates zip archive  
-**Option**: `-r` (recursive)
-
-```bash
-# Extract zip archive
-unzip archive.zip
-```
-**Purpose**: Extracts zip archive
-
-```bash
-# List zip contents
-unzip -l archive.zip
-```
-**Purpose**: Lists files without extracting
-
-```bash
-# Extract to specific directory
-unzip archive.zip -d /path/to/directory
-```
-**Purpose**: Extracts to specified location
+| Command | What It Does | Examples | Options |
+|---------|-------------|----------|---------|
+| `zip -r archive.zip directory/` | Creates zip archive | `zip -r backup.zip ~/Documents` | `-r` recursive |
+| `unzip archive.zip` | Extracts zip archive | `unzip backup.zip` | Extract to current dir |
+| `unzip -l archive.zip` | Lists files without extracting | Preview contents | `-l` list only |
+| `unzip archive.zip -d /path/` | Extracts to specific directory | `unzip file.zip -d ~/Desktop` | `-d` destination |
 
 ### Gzip (Individual Files)
 
-```bash
-# Compress file
-gzip filename.txt
-```
-**Purpose**: Compresses file (creates filename.txt.gz, removes original)
-
-```bash
-# Decompress file
-gunzip filename.txt.gz
-```
-**Purpose**: Decompresses file
-
-```bash
-# Keep original file
-gzip -k filename.txt
-```
-**Purpose**: Compresses while keeping original
+| Command | What It Does | Behavior | Options |
+|---------|-------------|----------|---------|
+| `gzip filename.txt` | Compresses file | Creates .gz, removes original | Default behavior |
+| `gunzip filename.txt.gz` | Decompresses file | Restores original, removes .gz | Decompress |
+| `gzip -k filename.txt` | Compresses while keeping original | Keeps both files | `-k` keep original |
+| `gzip -d filename.txt.gz` | Alternative decompress | Same as gunzip | `-d` decompress |
 
 ---
 
@@ -1596,77 +638,37 @@ gzip -k filename.txt
 
 ### System Updates
 
-```bash
-# Full system update routine
-sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
-```
-**Purpose**: Updates, upgrades, and cleans up in one command
+| Command | What It Does | When to Use | Frequency |
+|---------|-------------|-------------|-----------|
+| `sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y` | Complete update routine | System maintenance | Weekly |
 
 ### Disk Cleanup
 
-```bash
-# Clean package cache
-sudo apt clean && sudo apt autoclean
-```
-**Purpose**: Removes old package files
-
-```bash
-# Remove old kernels
-sudo apt autoremove --purge
-```
-**Purpose**: Removes unused kernels and packages
-
-```bash
-# Clean thumbnail cache
-rm -rf ~/.cache/thumbnails/*
-```
-**Purpose**: Clears thumbnail cache
-
-```bash
-# Clean journal logs
-sudo journalctl --vacuum-time=7d
-```
-**Purpose**: Keeps only last 7 days of logs
+| Command | What It Does | Space Saved | When to Use |
+|---------|-------------|-------------|-------------|
+| `sudo apt clean && sudo apt autoclean` | Removes old package files | Several GB | Monthly cleanup |
+| `sudo apt autoremove --purge` | Removes unused kernels and packages | 500MB - 2GB | After kernel updates |
+| `rm -rf ~/.cache/thumbnails/*` | Clears thumbnail cache | 100MB - 500MB | Visual cache cleanup |
+| `sudo journalctl --vacuum-time=7d` | Keeps only last 7 days of logs | Varies | Log management |
 
 ### Check System Issues
 
-```bash
-# Verify package integrity
-sudo apt check
-```
-**Purpose**: Checks for broken dependencies
+| Command | What It Does | When to Use | Purpose |
+|---------|-------------|-------------|---------|
+| `sudo apt check` | Checks for broken dependencies | After failed install | Verify package integrity |
+| `sudo apt --fix-broken install` | Fixes broken package dependencies | Installation problems | Repair packages |
+| `sudo dpkg --configure -a` | Configures unpacked packages | Interrupted installs | Complete configuration |
 
-```bash
-# Fix broken packages
-sudo apt --fix-broken install
-```
-**Purpose**: Attempts to fix broken package dependencies
+### Scheduled Tasks (Cron)
 
-```bash
-# Configure pending packages
-sudo dpkg --configure -a
-```
-**Purpose**: Configures unpacked but not configured packages
+| Command | What It Does | When to Use | Editor |
+|---------|-------------|-------------|--------|
+| `crontab -e` | Opens crontab editor for user | Schedule personal tasks | Opens default editor |
+| `crontab -l` | Lists scheduled cron jobs | View scheduled tasks | Shows current crontab |
+| `sudo nano /etc/crontab` | Edits system-wide cron jobs | System-level scheduling | System crontab |
 
-### Scheduled Tasks
-
-```bash
-# Edit user cron jobs
-crontab -e
-```
-**Purpose**: Opens crontab editor for scheduled tasks
-
-```bash
-# List cron jobs
-crontab -l
-```
-**Purpose**: Lists scheduled cron jobs
-
-```bash
-# System-wide cron
-sudo nano /etc/crontab
-```
-**Purpose**: Edits system-wide cron jobs
+**Cron Format**: `minute hour day month weekday command`  
+**Example**: `0 2 * * * /path/to/script.sh` (runs at 2 AM daily)
 
 ---
 
@@ -1674,109 +676,62 @@ sudo nano /etc/crontab
 
 ### Command History
 
-```bash
-# Show command history
-history
-```
-**Purpose**: Lists previously executed commands
-
-```bash
-# Search history
-history | grep search_term
-```
-**Purpose**: Searches command history
-
-```bash
-# Execute command from history
-!123
-```
-**Purpose**: Re-runs command number 123 from history
-
-```bash
-# Execute last command
-!!
-```
-**Purpose**: Repeats last command
-
-```bash
-# Clear history
-history -c
-```
-**Purpose**: Clears command history
+| Command | What It Does | Examples | Shortcuts |
+|---------|-------------|----------|-----------|
+| `history` | Lists previously executed commands | View command history | Shows numbered list |
+| `history \| grep <term>` | Searches command history | `history \| grep apt` | Find past commands |
+| `!123` | Re-runs command number 123 | Execute by number | From history list |
+| `!!` | Repeats last command | `sudo !!` (run last as root) | Quick repeat |
+| `!$` | Uses last argument | `ls file.txt` then `cat !$` | Last argument shortcut |
+| `history -c` | Clears command history | Privacy/cleanup | Removes all history |
 
 ### Aliases
 
+| Command | What It Does | Examples | Notes |
+|---------|-------------|----------|-------|
+| `alias ll='ls -lah'` | Creates command shortcut | `alias update='sudo apt update'` | Current session only |
+| `alias` | Shows all defined aliases | View active aliases | Lists all shortcuts |
+| `unalias ll` | Removes an alias | `unalias update` | Delete alias |
+| `echo "alias ll='ls -lah'" >> ~/.bashrc` | Makes alias permanent | Add to bashrc | Edit config file |
+| `source ~/.bashrc` | Reloads bash configuration | Apply changes | Reload without restart |
+
+**Common Useful Aliases**:
 ```bash
-# Create alias
+alias update='sudo apt update && sudo apt upgrade -y'
+alias clean='sudo apt autoremove && sudo apt autoclean'
 alias ll='ls -lah'
+alias ..='cd ..'
+alias ...='cd ../..'
 ```
-**Purpose**: Creates command shortcut
-
-```bash
-# List aliases
-alias
-```
-**Purpose**: Shows all defined aliases
-
-```bash
-# Make alias permanent
-echo "alias ll='ls -lah'" >> ~/.bashrc
-source ~/.bashrc
-```
-**Purpose**: Adds alias to bashrc and reloads
 
 ### Environment Variables
 
-```bash
-# Show all variables
-env
-```
-**Purpose**: Lists all environment variables
+| Command | What It Does | Examples | Scope |
+|---------|-------------|----------|-------|
+| `env` | Lists all environment variables | View all variables | Current environment |
+| `echo $PATH` | Displays specific variable value | `echo $HOME` | Variable content |
+| `export VAR="value"` | Sets temporary variable | `export EDITOR=nano` | Current session |
+| `echo 'export VAR="value"' >> ~/.bashrc` | Sets permanent variable | Add to bashrc | All future sessions |
+| `source ~/.bashrc` | Reloads bash configuration | Apply changes | Reload environment |
 
-```bash
-# Show specific variable
-echo $PATH
-```
-**Purpose**: Displays value of PATH variable
-
-```bash
-# Set temporary variable
-export VARIABLE_NAME="value"
-```
-**Purpose**: Sets variable for current session
-
-```bash
-# Set permanent variable
-echo 'export VARIABLE_NAME="value"' >> ~/.bashrc
-source ~/.bashrc
-```
-**Purpose**: Adds variable to bashrc
+**Common Variables**: `$PATH`, `$HOME`, `$USER`, `$SHELL`, `$PWD`
 
 ### Redirection and Pipes
 
-```bash
-# Redirect output to file
-command > output.txt
-```
-**Purpose**: Writes command output to file (overwrites)
+| Command | What It Does | Examples | Symbol Meaning |
+|---------|-------------|----------|----------------|
+| `command > file.txt` | Redirects output to file (overwrites) | `ls > files.txt` | `>` overwrite |
+| `command >> file.txt` | Appends output to file | `echo "text" >> log.txt` | `>>` append |
+| `command 2> errors.txt` | Redirects errors to file | `make 2> errors.log` | `2>` stderr only |
+| `command &> all.txt` | Redirects output and errors | `script.sh &> output.log` | `&>` both streams |
+| `command1 \| command2` | Pipes output to another command | `ls \| grep ".txt"` | `\|` pipe |
+| `command < input.txt` | Uses file as input | `sort < names.txt` | `<` input redirect |
+| `command \| tee file.txt` | Saves output and displays it | `ls \| tee list.txt` | View and save |
 
+**Common Pipe Combinations**:
 ```bash
-# Append to file
-command >> output.txt
+ps aux | grep nginx          # Find process
+history | grep apt           # Search history
+cat file.txt | sort | uniq  # Sort and remove duplicates
+df -h | grep /dev/sda       # Filter disk info
 ```
-**Purpose**: Appends command output to file
-
-```bash
-# Redirect errors
-command 2> errors.txt
-```
-**Purpose**: Redirects error messages to file
-
-```bash
-# Redirect both output and errors
-command &> all_output.txt
-```
-**Purpose**: Redirects stdout and stderr to file
-
-```bash
-# Pipe commands
