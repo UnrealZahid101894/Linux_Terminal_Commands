@@ -1,4 +1,3 @@
-# Linux_Terminal_Commands
 # Linux Terminal Commands Reference
 
 A comprehensive, well-organized guide to essential Linux terminal commands. Currently focused on **Zorin OS**, with plans to expand to other distributions.
